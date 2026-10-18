@@ -144,5 +144,3 @@ Si la sobrecarga del lock es inaceptable, se podría usar un patrón **CAS (comp
 La regla de oro: **leer y mutar bajo la misma adquisición del lock**. Nunca leer el estado, liberar el lock y luego mutar basándose en datos obsoletos — así es como ocurre el doble procesamiento.
 
 ---
-
-*Última actualización: 2026-10-18*
