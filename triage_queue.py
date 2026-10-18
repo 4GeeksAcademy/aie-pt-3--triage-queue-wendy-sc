@@ -7,6 +7,7 @@ level by order of arrival (FIFO). Uses three separate deques, one per triage lev
 """
 
 from collections import deque
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from datetime import datetime
 import sys
@@ -14,7 +15,7 @@ import sys
 
 # ── Data Model ──────────────────────────────────────────────────────────────
 
-@dataclass(order=True)
+@dataclass(order=False)
 class Patient:
     """Represents a patient in the triage queue.
 
@@ -203,7 +204,7 @@ def _main_loop() -> None:
     queue = TriageQueue()
 
     # Map option key -> (description, handler)
-    menu: dict[str, tuple[str, callable]] = {
+    menu: dict[str, tuple[str, Callable[[TriageQueue], None]]] = {
         "1": ("Add a new patient",       _add_patient),
         "2": ("Call next patient",       _call_next),
         "3": ("View current queue",      _view_queue),
